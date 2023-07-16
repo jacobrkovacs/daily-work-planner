@@ -3,6 +3,11 @@
 // in the html.
 var schedule = $('#schedule');
 var currentHour = dayjs();
+var saveBtnEl = $('.saveBtn')
+var addEvent = $('#t9').val()
+
+
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -10,24 +15,37 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  //
+
+
+  schedule.children().each(function(i){
+  saveBtnEl.on('click', function(event){
+    event.preventDefault();
+
+    var scheduledEvent = {
+      item: addEvent.value
+    }
+
+    console.log(typeof(addEvent))
+
+    localStorage.setItem('Scheduled Events', JSON.stringify(scheduledEvent))
+  })
+})
+  
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-    schedule.children().each(function(i){
-      if(this.id === (currentHour.format('H'))){
-        schedule.children().eq(i).addClass('present')
-      }
-      if(Number(this.id) > Number((currentHour.format('H')))){
-        schedule.children().eq(i).addClass('future')
-      }
-      if(Number(this.id) < Number((currentHour.format('H')))){
-        schedule.children().eq(i).addClass('past')
-      }
-    })
+  schedule.children().each(function(i){
+    if(this.id === (currentHour.format('H'))){
+      schedule.children().eq(i).addClass('present')
+    }else if(Number(this.id) > Number((currentHour.format('H')))){
+      schedule.children().eq(i).addClass('future')
+    }else{
+      schedule.children().eq(i).addClass('past')
+    }
+  })
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
