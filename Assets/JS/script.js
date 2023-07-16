@@ -17,7 +17,7 @@ $(function () {
   // useful when saving the description in local storage?
 
 
-  schedule.children().each(function(i){
+
   saveBtnEl.on('click', function(event){
     event.preventDefault();
 
@@ -25,11 +25,10 @@ $(function () {
       item: addEvent.value
     }
 
-    console.log(typeof(addEvent))
+    console.log(this.id)
 
     localStorage.setItem('Scheduled Events', JSON.stringify(scheduledEvent))
   })
-})
   
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
