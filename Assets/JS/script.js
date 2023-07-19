@@ -5,7 +5,7 @@ let savedEvents = {}
 
 $(function () {
   renderSavedEvents();
-  
+
   //sets current textarea content to the time block and adds that content to the savedEvents object and then stores that to the localStorage
   saveBtnEl.click(function(){
     var parent = this.parentElement
@@ -30,15 +30,12 @@ $(function () {
 
   //get any user input that was saved in localStorage and set the values of the corresponding textarea elements
   function renderSavedEvents(){
-
     let renderedEvents = localStorage.getItem('savedEvents')
-    let parsedRenderedEvents = JSON.parse(renderedEvents)
-    
+    let parsedRenderedEvents = JSON.parse(renderedEvents) 
     if(parsedRenderedEvents == null){
       console.log("No Saved Events")
       return
     }
-
     schedule.each(function(i){
       if(parsedRenderedEvents[Number(this.id)] != null){
         schedule.children('textarea').eq(i)[0].innerHTML = parsedRenderedEvents[Number(this.id)]
