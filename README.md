@@ -18,7 +18,7 @@ No installation required.
 - This application can be used to save different events during the work day and to keep track of time.<br>
 - Application URL: https://jacobrkovacs.github.io/daily-work-planner/<br>
 - here is a screenshot of the application in the web browser:<br>
-![application](assets/Images/Screenshot%202023-07-19%20at%203.14.42%20PM.png)
+![application](Assets/Images/Screenshot%202023-07-19%20at%203.14.42%20PM.png)
 
 ## Credits
 N/A
